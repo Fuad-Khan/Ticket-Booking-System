@@ -70,5 +70,5 @@ The **Bus Ticket Booking System** aims to provide users with an efficient, seaml
 
 ## Contact
 For any queries, please reach out to:
-- Email: [your-email@example.com](mailto: khan35-883@diu.edu.bd )
+- Email:khan35-883@diu.edu.bd 
 
