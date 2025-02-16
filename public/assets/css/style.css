@@ -1,0 +1,127 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+/* Services Section */
+.services {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    gap: 20px;
+    padding: 20px;
+}
+
+.service-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.service-card.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.service-card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 1em;
+}
+
+/* Hover effect for active service card */
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Disabled service cards */
+.service-card.disabled {
+    background-color: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.service-card.disabled:hover {
+    transform: none;
+}
+
+/* Mobile and Tablet Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 30px 10px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .services {
+        gap: 15px;
+    }
+
+    .service-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Small Mobile Devices (Up to 480px) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 20px 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .service-card {
+        width: 100%;
+        padding: 15px;
+    }
+}
