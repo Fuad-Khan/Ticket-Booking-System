@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,124 +6,86 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Header Styles */
-.main-header {
-    background-color: #333;
-    padding: 10px 0;
-    color: white;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.logo img {
-    height: 50px;
-}
-
-/* Navigation Styles */
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-.main-nav ul li {
-    display: inline;
-}
-
-.main-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: 0.3s;
-}
-
-.main-nav ul li a:hover {
-    background-color: #555;
-    border-radius: 5px;
-}
-
 /* Hero Section */
 .hero {
     text-align: center;
     padding: 50px 20px;
-    background-color: #ffffff;
+    background-color: #007bff;
+    color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hero h1 {
     font-size: 2.5em;
-    font-weight: bold;
-    color: #222; /* Darker text for better visibility */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
 .hero p {
     font-size: 1.2em;
-    font-weight: 500;
-    color: #555;
 }
 
 /* Services Section */
 .services {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
     gap: 20px;
     padding: 20px;
 }
 
 .service-card {
-    background-color: white;
+    background-color: #f8f9fa;
     padding: 20px;
-    width: 220px;
     text-align: center;
     border-radius: 10px;
+    width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.service-card.active {
+    background-color: #007bff;
+    color: white;
 }
 
-.icon {
+.service-card .icon {
     font-size: 40px;
-    color: #333;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.2em;
     margin-bottom: 10px;
 }
 
-/* Footer */
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+.service-card p {
+    font-size: 1em;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .services {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Hover effect for active service card */
+.service-card:hover {
+    transform: translateY(-10px);
+}
 
-    .service-card {
-        width: 80%;
+/* Disabled service cards */
+.service-card.disabled {
+    background-color: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.service-card.disabled:hover {
+    transform: none;
+}
+
+/* Mobile and Tablet Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 30px 10px;
     }
 
     .hero h1 {
@@ -132,5 +94,34 @@ body {
 
     .hero p {
         font-size: 1em;
+    }
+
+    .services {
+        gap: 15px;
+    }
+
+    .service-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Small Mobile Devices (Up to 480px) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 20px 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .service-card {
+        width: 100%;
+        padding: 15px;
     }
 }

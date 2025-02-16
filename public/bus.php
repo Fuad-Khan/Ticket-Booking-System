@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . '/../src/config/database.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,6 @@ require_once __DIR__ . '/../src/config/database.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bus Tickets - Take Your Ticket</title>
     <link rel="stylesheet" href="assets/css/bus.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <?php include __DIR__ . '/../src/views/header.php'; ?>
@@ -38,7 +36,7 @@ require_once __DIR__ . '/../src/config/database.php';
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['source'])) {
-        // Fetch and display bus results (same as previous index.php logic)
+        // Fetch and display bus results here
     }
     ?>
 

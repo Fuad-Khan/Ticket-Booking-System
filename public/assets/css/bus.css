@@ -63,14 +63,66 @@ body {
     background-color: #0056b3;
 }
 
-/* Mobile Responsive */
+/* Mobile and Tablet Responsive Enhancements */
 @media (max-width: 768px) {
+    /* Hero Section */
+    .hero {
+        padding: 40px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    /* Search Form */
     .search-form form {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .form-group input {
         width: 100%;
+        max-width: 400px; /* Prevent inputs from stretching too much */
+    }
+
+    .btn-search {
+        width: 100%;
+        max-width: 400px; /* Same max-width as inputs for alignment */
+        padding: 12px;
+        font-size: 1.1em;
+    }
+}
+
+/* Small Mobile Devices (Up to 480px) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 30px 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .search-form form {
+        padding: 15px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .btn-search {
+        padding: 14px;
+        font-size: 1.2em;
     }
 }
