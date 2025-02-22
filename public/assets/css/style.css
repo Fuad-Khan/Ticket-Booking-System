@@ -1,99 +1,113 @@
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(45deg, #0202d8, #0474be, #becc01, #53354a, #b83b5e);
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s infinite alternate ease-in-out;
+    color: #eee;
 }
+
+
 
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 50px 20px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 10px;
+    padding: 80px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
     margin: 20px auto;
     max-width: 900px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease-in-out;
+}
+
+.hero:hover {
+    transform: scale(1.03);
 }
 
 .hero h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #f8b400;
+    text-shadow: 3px 3px 15px rgba(255, 136, 0, 0.5);
 }
 
 .hero p {
-    font-size: 1.2em;
+    font-size: 1.4em;
+    opacity: 0.9;
+    color: #d4d4d4;
 }
 
 /* Services Section */
 .services {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    padding: 30px;
 }
 
 .service-card {
-    background-color: #f8f9fa;
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     text-align: center;
-    border-radius: 10px;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 220px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease-in-out;
+    backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 136, 0, 0.3);
 }
 
 .service-card.active {
-    background-color: #007bff;
+    background: linear-gradient(45deg, #ff5f6d, #ffc371);
     color: white;
 }
 
-.service-card .icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.service-card h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.service-card p {
-    font-size: 1em;
-}
-
-/* Hover effect for active service card */
-.service-card:hover {
-    transform: translateY(-10px);
-}
-
-/* Disabled service cards */
 .service-card.disabled {
-    background-color: #e0e0e0;
-    color: #999;
+    background: rgba(255, 255, 255, 0.15);
+    color: #bbb;
     cursor: not-allowed;
 }
 
-.service-card.disabled:hover {
-    transform: none;
+.service-card .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #ff9a3c;
+    text-shadow: 2px 2px 10px rgba(255, 154, 60, 0.6);
 }
 
-/* Mobile and Tablet Responsive */
+.service-card h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.service-card p {
+    font-size: 1.1em;
+    opacity: 0.8;
+}
+
+/* Mobile & Tablet Responsive */
 @media (max-width: 768px) {
     .hero {
-        padding: 30px 10px;
+        padding: 50px 15px;
     }
 
     .hero h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     .hero p {
-        font-size: 1em;
+        font-size: 1.2em;
     }
 
     .services {
@@ -102,14 +116,13 @@ body {
 
     .service-card {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
     }
 }
 
-/* Small Mobile Devices (Up to 480px) */
 @media (max-width: 480px) {
     .hero {
-        padding: 20px 10px;
+        padding: 30px 10px;
     }
 
     .hero h1 {
@@ -117,7 +130,7 @@ body {
     }
 
     .hero p {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .service-card {
