@@ -1,6 +1,6 @@
 -- Create Database
-CREATE DATABASE TakeYourTicket;
-USE TakeYourTicket;
+CREATE DATABASE bus_booking;
+USE bus_booking;
 
 -- 1. Users Table
 CREATE TABLE Users (
