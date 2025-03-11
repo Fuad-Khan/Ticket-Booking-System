@@ -86,10 +86,6 @@ bus-ticket-booking/                  # Root Directory
 │   │   └── images/                 # Images (logos, backgrounds, etc.)
 │   ├── index.php                   # Homepage (service selection)
 │   ├── bus.php                     # Bus ticket booking page
-│   ├── train.php                   # Train ticket booking page
-│   ├── flight.php                  # Flight ticket booking page
-│   ├── movie.php                   # Movie ticket booking page
-│   ├── event.php                   # Event ticket booking page
 │   ├── login.php                   # User login page
 │   ├── register.php                # User registration page
 │   ├── forgot-password.php         # Password recovery page
