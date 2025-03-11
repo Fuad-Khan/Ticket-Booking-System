@@ -148,12 +148,13 @@ nav a:focus {
 
     <nav>
         <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="orders.php"><i class="fas fa-box"></i> Your Tickets</a>
-            <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
+            <a href="dashboard.php"><i class="fas fa-user"></i> Dashboard</a>
+            <a href="profile.php"><i class="fas fa-user"></i> Dashboard</a>
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         <?php else: ?>
+            <a href="dashboard.php"><i class="fas fa-user"></i> Dashboard</a>
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             <a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
