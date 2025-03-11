@@ -1,33 +1,3 @@
-<?php
-session_start();
-require_once __DIR__ . '/../src/config/database.php';
-require_once __DIR__ . '/../src/utils/Session.php';
-require_once __DIR__ . '/../src/utils/Helpers.php';
-require_once __DIR__ . '/../src/models/User.php';
-
-// Redirect to dashboard if user is already logged in
-if (Session::has('user_id')) {
-    Helpers::redirect('/dashboard.php');
-}
-
-$error = '';
-
-// Handle login form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = Helpers::sanitize($_POST['email']);
-    $password = $_POST['password'];
-
-    $userModel = new User($pdo);
-    $user = $userModel->getUserByEmail($email);
-
-    if ($user && password_verify($password, $user['password'])) {
-        Session::set('user_id', $user['user_id']);
-        Helpers::redirect('/dashboard.php');
-    } else {
-        $error = "Invalid email or password.";
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
