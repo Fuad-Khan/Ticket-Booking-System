@@ -7,7 +7,7 @@ class User {
     }
 
     // Register a new user
-    public function register($name, $email, $phone, $passwordHash) {
+    public function register($name, $email, $phone, $password) {
         $stmt = $this->pdo->prepare("
             INSERT INTO Users (name, email, phone, password)
             VALUES (:name, :email, :phone, :password)
@@ -16,7 +16,7 @@ class User {
             ':name' => $name,
             ':email' => $email,
             ':phone' => $phone,
-            ':password' => $passwordHash,
+            ':password' => $password,
         ]);
     }
 
