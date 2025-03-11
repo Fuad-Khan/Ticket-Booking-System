@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+<?php include __DIR__ . '/../src/views/header.php'; ?>
     
     <div class="hero">
         <h1>Welcome to Take Your Ticket</h1>
@@ -44,5 +46,8 @@
             <p>Service not available right now.</p>
         </div>
     </div>
+
+    <?php include __DIR__ . '/../src/views/footer.php'; ?>
+
 </body>
 </html>

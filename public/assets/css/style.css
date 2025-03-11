@@ -3,7 +3,7 @@ body {
     font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #0202d8, #0474be, #becc01, #53354a, #b83b5e);
+    background: linear-gradient(45deg, white);
     background-size: 400% 400%;
     animation: gradientAnimation 20s infinite alternate ease-in-out;
     color: #eee;
