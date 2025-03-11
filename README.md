@@ -48,7 +48,6 @@ The **Bus Ticket Booking System** aims to provide users with an efficient, seaml
 - **Backend:** PHP, MySQL, Laravel
 - **Tools:** GitHub (Version Control), Figma (UI Design)
 
-
 ---
 
 ## Future Enhancements
@@ -59,129 +58,62 @@ The **Bus Ticket Booking System** aims to provide users with an efficient, seaml
 
 ---
 
-## Contributors
-- **Md. Mubtasim Fuad Khan**  
-- **Md. Taofick Mahmoodur Rahaman**  
-- **Abdullah Al Jubyer**  
-
----
-
-
-
-## Contact
-For any queries, please reach out to:
-- Email:khan35-883@diu.edu.bd 
-
 ## Project Structure
-
 ```plaintext
 bus-ticket-booking/                  # Root Directory
+├── public/                          # Publicly accessible files
+│   ├── assets/                      # CSS, JS, Images
+│   ├── index.php                    # Homepage
+│   ├── bus.php                       # Bus ticket booking page
+│   ├── login.php                     # User login page
+│   ├── register.php                  # User registration page
+│   ├── payment.php                   # Payment page
+│   ├── bookings.php                  # Booking confirmation page
+│   ├── dashboard.php                 # User dashboard
+│   ├── profile.php                    # User profile page
+│   ├── about.php                      # About Us page
+│   ├── contact.php                    # Contact Us page
 │
-├── public/                          # Publicly accessible files (Apache/Nginx document root)
-│   ├── assets/                      
-│   │   ├── css/                    # CSS files
-│   │   │   └── style.css           # Main stylesheet
-│   │   ├── js/                     # JavaScript files
-│   │   │   └── script.js           # Main JS file
-│   │   └── images/                 # Images (logos, backgrounds, etc.)
-│   ├── index.php                   # Homepage (service selection)
-│   ├── bus.php                     # Bus ticket booking page
-│   ├── login.php                   # User login page
-│   ├── register.php                # User registration page
-│   ├── forgot-password.php         # Password recovery page
-│   ├── bookings.php                # Booking confirmation page
-│   ├── payment.php                 # Payment page
-│   ├── booking-success.php         # Booking success page
-│   ├── booking-failed.php          # Booking failed page
-│   ├── dashboard.php               # User dashboard
-│   ├── my-bookings.php             # User bookings page
-│   ├── profile.php                 # User profile page
-│   ├── about.php                   # About Us page
-│   ├── contact.php                 # Contact Us page
-│   ├── terms.php                   # Terms and Conditions page
-│   ├── privacy.php                 # Privacy Policy page
-│   ├── 404.php                     # 404 Not Found page
-│   ├── 500.php                     # 500 Internal Server Error page
-│   ├── .htaccess                   # URL rewriting + security rules
+├── admin/                           # Admin panel (optional)
+│   ├── dashboard.php                # Admin dashboard
+│   ├── manage-buses.php             # Manage buses
+│   ├── manage-schedules.php         # Manage schedules
+│   ├── view-bookings.php            # View all bookings
+│   └── view-users.php               # View all users
 │
-├── admin/                          # Admin panel (optional)
-│   ├── login.php                   # Admin login page
-│   ├── dashboard.php               # Admin dashboard
-│   ├── manage-buses.php            # Manage buses
-│   ├── manage-routes.php           # Manage routes
-│   ├── manage-schedules.php        # Manage schedules
-│   ├── view-bookings.php           # View all bookings
-│   └── view-users.php              # View all users
+├── src/                             # PHP source code (backend logic)
+│   ├── config/database.php         # Database connection
+│   ├── controllers/                 # Business logic controllers
+│   ├── models/                      # Database interactions
+│   ├── utils/                       # Helper functions
+│   └── views/                       # Reusable HTML components
 │
-├── src/                            # PHP source code (backend logic)
-│   ├── config/
-│   │   ├── database.php            # Database connection
-│   │   └── constants.php           # Constants (BASE_URL, etc.)
-│   ├── controllers/                # Business logic
-│   │   ├── AuthController.php      # Handles login/registration
-│   │   ├── BookingController.php   # Handles bookings
-│   │   ├── PaymentController.php   # Processes payments
-│   │   └── AdminController.php     # Handles admin actions
-│   ├── models/                     # Database interactions
-│   │   ├── User.php                # User model
-│   │   ├── Bus.php                 # Bus model
-│   │   ├── Booking.php             # Booking model
-│   │   ├── Payment.php             # Payment model
-│   │   └── Admin.php               # Admin model
-│   ├── utils/                      # Helper functions
-│   │   ├── Session.php             # Session management
-│   │   ├── Helpers.php             # Redirect, sanitize functions
-│   │   └── Mailer.php              # Email sending utility
-│   └── views/                      # Reusable HTML components
-│       ├── header.php              # Common header
-│       ├── footer.php              # Common footer
-│       ├── alerts.php              # Success/error message templates
-│       └── admin/                  # Admin-specific views
-│           ├── header.php          # Admin header
-│           └── footer.php          # Admin footer
+├── database/                        # SQL files
+│   └── bus_booking.sql              # Database schema
 │
-├── database/                       # SQL files
-│   └── bus_booking.sql             # Database schema (exported from MySQL)
-│
-├── tests/                          # Simple PHP tests (optional)
-├── vendor/                         # Composer packages (if used)
-│
-├── .htaccess                       # Global security rules (deny access to src/)
-├── composer.json                   # Composer config (if needed)
-└── README.md                       # Setup instructions
-
-
-
-# How to Run This Project
-
-Follow these steps to set up and run the **Bus Ticket Booking System** on your local machine.
+├── README.md                        # Setup instructions
+└── .htaccess                         # Security rules
+```
 
 ---
 
-## 1. Prerequisites  
+## How to Run This Project
 
+### 1. **Prerequisites**
 Ensure you have the following installed on your system:
-
 - **XAMPP / WAMP / LAMP / MAMP** (For Apache, PHP, and MySQL)
 - **Git** (To clone the repository, optional)
-- **PHP ** (Recommended version)
-- **MySQL ** (Database)
+- **PHP** (Recommended latest version)
+- **MySQL** (Database)
 
----
-
-## 2. Clone the Repository  
-
-Open a terminal or command prompt and run:
-
+### 2. **Clone the Repository**
 ```bash
 git clone https://github.com/Fuad-Khan/Ticket-Booking-System.git
 cd bus-ticket-booking
-
+```
 > If you don’t have Git installed, download the ZIP from GitHub and extract it manually.
 
----
-
-### **3. Configure the Database**
+### 3. **Configure the Database**
 #### **Step 1: Create a Database**
 1. Open **phpMyAdmin** (http://localhost/phpmyadmin/).
 2. Click on **New**, enter `bus_booking` as the database name, and click **Create**.
@@ -192,11 +124,8 @@ cd bus-ticket-booking
 3. Click **Choose File** and select `database/bus_booking.sql`.
 4. Click **Go** to import the database schema.
 
----
-
-### **4. Configure the Environment**
+### 4. **Configure the Environment**
 Open `src/config/database.php` and update the database credentials:
-
 ```php
 $host = 'localhost';
 $dbname = 'bus_booking';
@@ -204,14 +133,20 @@ $username = 'root';  // Change if using a different username
 $password = '';     // Change if your database has a password
 ```
 
-
-### **5. Start the Web Server**
+### 5. **Start the Web Server**
 #### **Option 1: Using XAMPP / WAMP**
 1. Move the project folder to `htdocs/` (XAMPP) or `www/` (WAMP).
 2. Start **Apache** and **MySQL**.
 3. Open a browser and go to:
-
    ```
    http://localhost/bus-ticket-booking/public/
    ```
+
+---
+
+## Contact
+For any queries, please reach out to:
+- **Email:** khan35-883@diu.edu.bd
+
+---
 
