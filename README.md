@@ -149,3 +149,69 @@ bus-ticket-booking/                  # Root Directory
 ├── .htaccess                       # Global security rules (deny access to src/)
 ├── composer.json                   # Composer config (if needed)
 └── README.md                       # Setup instructions
+
+
+
+# How to Run This Project
+
+Follow these steps to set up and run the **Bus Ticket Booking System** on your local machine.
+
+---
+
+## 1. Prerequisites  
+
+Ensure you have the following installed on your system:
+
+- **XAMPP / WAMP / LAMP / MAMP** (For Apache, PHP, and MySQL)
+- **Git** (To clone the repository, optional)
+- **PHP ** (Recommended version)
+- **MySQL ** (Database)
+
+---
+
+## 2. Clone the Repository  
+
+Open a terminal or command prompt and run:
+
+```bash
+git clone https://github.com/Fuad-Khan/Ticket-Booking-System.git
+cd bus-ticket-booking
+
+> If you don’t have Git installed, download the ZIP from GitHub and extract it manually.
+
+---
+
+### **3. Configure the Database**
+#### **Step 1: Create a Database**
+1. Open **phpMyAdmin** (http://localhost/phpmyadmin/).
+2. Click on **New**, enter `bus_booking` as the database name, and click **Create**.
+
+#### **Step 2: Import the SQL File**
+1. Click on the **bus_booking** database.
+2. Go to the **Import** tab.
+3. Click **Choose File** and select `database/bus_booking.sql`.
+4. Click **Go** to import the database schema.
+
+---
+
+### **4. Configure the Environment**
+Open `src/config/database.php` and update the database credentials:
+
+```php
+$host = 'localhost';
+$dbname = 'bus_booking';
+$username = 'root';  // Change if using a different username
+$password = '';     // Change if your database has a password
+```
+
+
+### **5. Start the Web Server**
+#### **Option 1: Using XAMPP / WAMP**
+1. Move the project folder to `htdocs/` (XAMPP) or `www/` (WAMP).
+2. Start **Apache** and **MySQL**.
+3. Open a browser and go to:
+
+   ```
+   http://localhost/bus-ticket-booking/public/
+   ```
+

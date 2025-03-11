@@ -24,7 +24,7 @@ html, body {
 /* Header */
 header {
     
-    background: linear-gradient(to right, #9136f3, #2575fc);
+    background: linear-gradient(to right, #2575fc, #2575fc);
     color: white;
     padding: 20px 5%;
     display: flex;
