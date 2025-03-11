@@ -9,176 +9,111 @@
     <link rel="stylesheet" href="/../public/assets/css/footer.css">
 
     <style>
-        /* Basic Reset */
+  
+ 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Style */
+/* Body and general styles */
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f6f9; /* Light gray background */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     color: #333;
-  
+    line-height: 1.6;
 }
 
 /* About Us Section */
 #about-us {
-    background-color: #ffffff;
     padding: 40px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: transform 0.3s ease;
-}
-
-#about-us:hover {
-    transform: translateY(-10px); /* Lift effect on hover */
+    background-color: #fff;
+    text-align: center;
 }
 
 #about-us h2 {
-    font-size: 2em;
-    color: #2c3e50;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 #about-us p {
-    font-size: 1.2em;
-    color: #7f8c8d;
-    line-height: 1.8;
+    font-size: 1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* Contact Section */
 #contact {
-    background-color: #ffffff;
     padding: 40px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: center;
+    color: #333; /* Ensure the text is visible */
 }
 
 #contact h2 {
-    font-size: 2em;
-    color: #2c3e50;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 #contact p {
-    font-size: 1.2em;
-    color: #7f8c8d;
-    line-height: 1.8;
+    font-size: 1rem;
+    color: #555;
 }
 
 #contact a {
-    color: #3498db;
+    color: #007bff; /* Link color */
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 #contact a:hover {
-    color: #190588;
     text-decoration: underline;
-    transform: scale(1.05); /* Slight scaling effect */
 }
+
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 30px;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 footer p {
-    margin: 10px 0;
+    font-size: 1rem;
+    margin-bottom: 10px;
 }
 
-/* Social Media Links */
-.social-media {
-    margin: 20px 0;
+footer .social-media {
+    margin-top: 10px;
 }
 
-.social-media a {
+footer .social-media a {
+    font-size: 1.5rem;
+    margin: 0 10px;
     color: #fff;
-    margin: 0 15px;
     text-decoration: none;
-    font-size: 2em;
-    transition: color 0.3s ease-in-out, transform 0.3s ease;
 }
 
-.social-media a:hover {
-    transform: scale(1.1); /* Slight enlarge on hover */
+footer .social-media a:hover {
+    color: #4CAF50;
 }
 
-/* Social Media Specific Colors */
-.social-media a:nth-child(1):hover {
-    color: #b906f0;  /* Instagram Pink */
-}
-
-.social-media a:nth-child(2):hover {
-    color: #3b5998; /* Facebook Blue */
-}
-
-.social-media a:nth-child(3):hover {
-    color: #010000; 
-}
-
-.social-media a:nth-child(4):hover {
-    color: #ff0000;  /* YouTube Red */
-}
-
-.social-media a:nth-child(5):hover {
-    color: #0496ff; /* Twitter Blue */
-}
-
-/* Media Queries for Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
-    #about-us, #contact {
-        padding: 20px;
-    }
-
     #about-us h2, #contact h2 {
-        font-size: 1.8em;
+        font-size: 1.5rem;
     }
 
     #about-us p, #contact p {
-        font-size: 1em;
-    }
-
-    .social-media a {
-        font-size: 1.6em;
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 480px) {
-    body {
-        padding-top: 20px;
-    }
 
-    #about-us, #contact {
-        padding: 15px;
-    }
-
-    #about-us h2, #contact h2 {
-        font-size: 1.6em;
-    }
-
-    #about-us p, #contact p {
-        font-size: 0.9em;
-    }
-
-    footer p {
-        font-size: 1em;
-    }
-}
     </style>
  
 </head>
