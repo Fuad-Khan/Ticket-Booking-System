@@ -45,8 +45,8 @@ The **Bus Ticket Booking System** aims to provide users with an efficient, seaml
 
 ## Tech Stack
 - **Frontend:** HTML, CSS, JavaScript
-- **Backend:** PHP, MySQL, Laravel
-- **Tools:** GitHub (Version Control), Figma (UI Design)
+- **Backend:** PHP, MySQL
+- **Tools:** GitHub (Version Control)
 
 ---
 
