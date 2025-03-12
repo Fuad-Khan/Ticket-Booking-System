@@ -71,7 +71,7 @@ body {
 #contact a:hover {
     color: #190588;
     text-decoration: underline;
-    transform: scale(1.05); /* Slight scaling effect */
+    transform: scale(1.05); 
 }
 
 /* Footer */
@@ -103,30 +103,6 @@ footer p {
     transition: color 0.3s ease-in-out, transform 0.3s ease;
 }
 
-.social-media a:hover {
-    transform: scale(1.1); /* Slight enlarge on hover */
-}
-
-/* Social Media Specific Colors */
-.social-media a:nth-child(1):hover {
-    color: #b906f0;  /* Instagram Pink */
-}
-
-.social-media a:nth-child(2):hover {
-    color: #3b5998; /* Facebook Blue */
-}
-
-.social-media a:nth-child(3):hover {
-    color: #010000; 
-}
-
-.social-media a:nth-child(4):hover {
-    color: #ff0000;  /* YouTube Red */
-}
-
-.social-media a:nth-child(5):hover {
-    color: #0496ff; /* Twitter Blue */
-}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
