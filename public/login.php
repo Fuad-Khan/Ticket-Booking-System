@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../src/views/header.php'; ?>
 
     <div class="auth-container">
         <h2>Login</h2>
@@ -30,7 +29,6 @@
         <p>Don't have an account? <a href="register.php">Register here</a>.</p>
     </div>
 
-    <?php include __DIR__ . '/../src/views/footer.php'; ?>
 
     <script src="assets/js/script.js"></script>
 </body>
