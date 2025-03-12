@@ -41,6 +41,7 @@
             <button type="submit" class="btn-register">Register</button>
         </form>
         <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        <button class="btn-home" onclick="window.location.href='index.php';">Back to Home</button>
     </div>
 
 

@@ -3,143 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyOnlineShop</title>
-    <link rel="stylesheet" href="/public/assets/css/header.css">
-
+    <title>Take Your Ticket</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    
-}
-/* Header */
-header {
-    
-    background: linear-gradient(to right, #2575fc, #2575fc);
-    color: white;
-    padding: 20px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 3px solid #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    flex-wrap: wrap; /* Allows wrapping for smaller screens */
-    width: 100%; /* Ensures header spans the full width */
-    transition: all 0.3s ease; /* Smooth transition */
-}
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
 
-/* Logo */
-header .logo h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
-    margin: 0;
-    text-align: center;
-    flex: 1 1 100%; /* Full width on smaller screens */
-    transition: transform 0.3s ease; /* Smooth hover effect */
-}
+        /* Header */
+        header {
+            background: linear-gradient(to right, #2575fc, #1a55b4);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            flex-wrap: wrap;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
 
-/* Logo Hover Effect */
-header .logo h1:hover {
-    transform: scale(1.1);
-}
+        /* Logo */
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+            transition: transform 0.3s ease;
+        }
 
-/* Remove underline from the logo link */
-header .logo h1 a {
-    text-decoration: none; /* Removes underline from the logo */
-    color: white; /* Ensures the logo link is white */
-}
+        .logo h1 a {
+            text-decoration: none;
+            color: white;
+        }
 
-/* Navigation */
-nav {
-    display: flex;
-    gap: 20px;
-    flex: 1; /* Ensures the nav takes up appropriate space */
-    justify-content: flex-end; /* Aligns items to the right */
-    flex-wrap: wrap; /* Allows wrapping for narrow screens */
-}
+        .logo h1:hover {
+            transform: scale(1.1);
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.3s ease;
-    text-align: center;
-}
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
 
-/* Navigation Hover Effect */
-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
 
-/* Focus Outline for Navigation Links */
-nav a:focus {
-    outline: 2px solid #fff;
-    outline-offset: 3px;
-}
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Stack logo and navigation vertically */
-        padding: 15px 5%;
-        text-align: center; /* Ensures header items are centered */
-    }
+        nav a:focus {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
 
-    header .logo h1 {
-        font-size: 2rem; /* Smaller font size for smaller screens */
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 5%;
+                gap: 15px;
+            }
 
-    nav {
-        justify-content: center; /* Center navigation links on smaller screens */
-        gap: 15px; /* Slightly reduced gap */
-    }
+            .logo h1 {
+                font-size: 2rem;
+            }
 
-    nav a {
-        padding: 8px 15px; /* Adjust padding for smaller links */
-        font-size: 0.9rem; /* Smaller font size */
-    }
-}
+            nav {
+                justify-content: center;
+            }
+        }
 
-@media (max-width: 480px) {
-    header {
-        padding: 10px 5%;
-    }
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+            }
 
-    header .logo h1 {
-        font-size: 1.8rem; /* Further reduce font size */
-    }
-
-    nav {
-        flex-direction: column; /* Stack links vertically */
-        gap: 10px;
-        width: 100%; /* Ensure the navigation is full width */
-        align-items: center; /* Center the items in the column layout */
-    }
-
-    nav a {
-        padding: 10px; /* Compact padding for very small screens */
-        font-size: 0.85rem;
-    }
-}
+            nav a {
+                width: 100%;
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 <body>
-
 <!-- Header Section -->
 <header>
     <div class="logo">
@@ -148,13 +123,14 @@ nav a:focus {
 
     <nav>
         <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="dashboard.php"><i class="fas fa-user"></i> Dashboard</a>
-            <a href="profile.php"><i class="fas fa-user"></i> Dashboard</a>
+            <!-- Logged-in User Links -->
+            <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         <?php else: ?>
-            <a href="dashboard.php"><i class="fas fa-user"></i> Dashboard</a>
+            <!-- Guest User Links -->
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             <a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
@@ -162,6 +138,5 @@ nav a:focus {
         <?php endif; ?>
     </nav>
 </header>
-
 </body>
 </html>

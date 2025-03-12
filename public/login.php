@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,9 +25,10 @@
             </div>
             <button type="submit" class="btn-login">Login</button>
         </form>
+        <p><a href="forgot-password.php">Forgot Password?</a></p>
         <p>Don't have an account? <a href="register.php">Register here</a>.</p>
+        <button class="btn-home" onclick="window.location.href='index.php';">Back to Home</button>
     </div>
-
 
     <script src="assets/js/script.js"></script>
 </body>
