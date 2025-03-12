@@ -153,7 +153,7 @@
                 <h3>Contact Us</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
                 <p><i class="fas fa-envelope"></i> fuadkhan183@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +880 1234 56789</p>
+                <p><i class="fas fa-phone"></i> +8801726121880</p>
             </div>
 
             <!-- Social Media -->
