@@ -17,23 +17,24 @@
     </div>
 
     <div class="search-form">
-        <form action="bus.php" method="GET">
-            <div class="form-group">
-                <input type="text" name="source" placeholder="From City" 
-                       value="<?= htmlspecialchars($_GET['source'] ?? '') ?>" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="destination" placeholder="To City" 
-                       value="<?= htmlspecialchars($_GET['destination'] ?? '') ?>" required>
-            </div>
-            <div class="form-group">
-                <input type="date" name="date" 
-                       value="<?= htmlspecialchars($_GET['date'] ?? date('Y-m-d')) ?>" 
-                       min="<?= date('Y-m-d') ?>" required>
-            </div>
-            <button type="submit" class="btn-search">Search Buses</button>
-        </form>
-    </div>
+    <form action="bus.php" method="GET">
+        <div class="form-group">
+            <input type="text" name="source" placeholder="From City" 
+                   value="<?= htmlspecialchars($_GET['source'] ?? '') ?>" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="destination" placeholder="To City" 
+                   value="<?= htmlspecialchars($_GET['destination'] ?? '') ?>" required>
+        </div>
+        <div class="form-group">
+            <input type="date" name="date" 
+                   value="<?= htmlspecialchars($_GET['date'] ?? date('Y-m-d')) ?>" 
+                   min="<?= date('Y-m-d') ?>" required>
+        </div>
+        <button type="submit" class="btn-search">Search Buses</button>
+    </form>
+</div>
+
 
     <div class="bus-listings">
         <?php if ($error): ?>

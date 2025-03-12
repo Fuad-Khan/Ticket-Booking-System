@@ -3,146 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Online Shop</title>
-    <!-- Font Awesome CDN for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/../public/assets/css/footer.css">
-
+    <title>Take Your Ticket - Online Bus Booking</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-  
- 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Body and general styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh; /* Ensure body takes at least the full viewport height */
+            display: flex;
+            flex-direction: column; /* Make body a flex container */
+        }
 
-/* About Us Section */
-#about-us {
-    padding: 40px;
-    background-color: #fff;
-    text-align: center;
-}
+        /* Main Content */
+        .main-content {
+            flex: 1; /* Allow main content to grow and push footer to the bottom */
+            padding: 2rem 5%; /* Add some padding to the main content */
+        }
 
-#about-us h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 15px;
-}
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(to right, #2575fc, #1a55b4);
+            color: #fff;
+            padding: 2rem 5%;
+            font-family: 'Arial', sans-serif;
+            margin-top: auto; /* Push footer to the bottom */
+        }
 
-#about-us p {
-    font-size: 1rem;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto;
-}
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
 
-/* Contact Section */
-#contact {
-    padding: 40px;
-    background-color: #f9f9f9;
-    text-align: center;
-    color: #333; /* Ensure the text is visible */
-}
+        .footer-section {
+            margin-bottom: 1.5rem;
+        }
 
-#contact h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 15px;
-}
+        .footer-section h3 {
+            color: #ffcc00;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
 
-#contact p {
-    font-size: 1rem;
-    color: #555;
-}
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #ffcc00;
+        }
 
-#contact a {
-    color: #007bff; /* Link color */
-    text-decoration: none;
-}
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+        }
 
-#contact a:hover {
-    text-decoration: underline;
-}
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
 
+        .footer-section a:hover {
+            color: #ffcc00;
+        }
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
+        .social-media {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
 
-footer p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
+        .social-media a {
+            font-size: 1.4rem;
+            color: #fff;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
 
-footer .social-media {
-    margin-top: 10px;
-}
+        .social-media a:hover {
+            transform: translateY(-3px);
+            color: #ffcc00;
+        }
 
-footer .social-media a {
-    font-size: 1.5rem;
-    margin: 0 10px;
-    color: #fff;
-    text-decoration: none;
-}
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
 
-footer .social-media a:hover {
-    color: #4CAF50;
-}
+        .footer-bottom p {
+            margin: 0;
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    #about-us h2, #contact h2 {
-        font-size: 1.5rem;
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
 
-    #about-us p, #contact p {
-        font-size: 0.9rem;
-    }
-}
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
 
-
+            .social-media {
+                justify-content: center;
+            }
+        }
     </style>
- 
 </head>
 <body>
 
-    <!-- About Us Section -->
-    <section id="about-us">
-        <h2>About Us</h2>
-        <p>Welcome to MyOnlineShop. We provide a wide variety of products from different categories such as electronics, groceries, clothes, and more. Our goal is to offer great products at the best prices and deliver them with care.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions, feel free to contact us at <a href="mailto:fuadkhan183@gmail.com">fuadkhan183@gmail.com</a></p>
-    </section>
-
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 My Shop. All rights reserved.</p>
-        <div class="social-media">
-            <p>Follow Us:</p>
-            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://github.com/Fuad-Khan" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Take Your Ticket is your trusted partner for online bus ticket bookings. We provide seamless and secure booking experiences for travelers across Bangladesh.</p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
+                <p><i class="fas fa-envelope"></i> fuadkhan183@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +880 1234 56789</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-media">
+                    <a href="https://www.facebook.com" aria-label="Facebook" target="_blank" rel="noopener">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://github.com/Fuad-Khan" aria-label="GitHub" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com" aria-label="YouTube" target="_blank" rel="noopener">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Take Your Ticket. All rights reserved. | Developed by Fuad Khan</p>
         </div>
     </footer>
-
 </body>
 </html>
