@@ -42,7 +42,7 @@
 
        
     </main>
-    <?php include __DIR__ . '/../src/views/footer.php'; ?>
+    <?php include __DIR__ . '/../src/views/footer_sub.php'; ?>
 
 
     <script src="assets/js/bus.js"></script>
