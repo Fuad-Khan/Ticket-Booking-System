@@ -19,6 +19,6 @@
         </div>
     </div>
 
-    <?php include __DIR__ . '/../src/views/footer.php'; ?>
+    <?php include __DIR__ . '/../src/views/footer_sub.php'; ?>
 </body>
 </html>
