@@ -1,65 +1,39 @@
 <?php
-class User {
-    private $pdo;
+// src/model/User.php
 
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
+require_once __DIR__ . '/../config/database.php';
+
+class User
+{
+    // Insert user into the database
+    public static function addUser($name, $email, $phone, $password)
+    {
+        global $pdo;
+
+        // Hash the password before inserting it into the database
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            // Prepare SQL query to insert user data into the Users table
+            $stmt = $pdo->prepare("INSERT INTO Users (name, email, phone, password) VALUES (:name, :email, :phone, :password)");
+
+            // Bind the parameters
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':password', $hashed_password);
+
+            // Execute the query
+            $stmt->execute();
+
+            return true; // User added successfully
+        } catch (PDOException $e) {
+            // Catch any error and return false
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
 
-    // Register a new user
-    public function register($name, $email, $phone, $password) {
-        $stmt = $this->pdo->prepare("
-            INSERT INTO Users (name, email, phone, password)
-            VALUES (:name, :email, :phone, :password)
-        ");
-        return $stmt->execute([
-            ':name' => $name,
-            ':email' => $email,
-            ':phone' => $phone,
-            ':password' => $password,
-        ]);
-    }
-
-    // Get user by email
-    public function getUserByEmail($email) {
-        $stmt = $this->pdo->prepare("SELECT * FROM Users WHERE email = :email");
-        $stmt->execute([':email' => $email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    // Get user by phone
-    public function getUserByPhone($phone) {
-        $stmt = $this->pdo->prepare("SELECT * FROM Users WHERE phone = :phone");
-        $stmt->execute([':phone' => $phone]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    // Get user by ID
-    public function getUserById($userId) {
-        $stmt = $this->pdo->prepare("SELECT * FROM Users WHERE user_id = :user_id");
-        $stmt->execute([':user_id' => $userId]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    // Update user profile
-    public function updateUser($userId, $name, $email, $phone) {
-        $stmt = $this->pdo->prepare("
-            UPDATE Users
-            SET name = :name, email = :email, phone = :phone
-            WHERE user_id = :user_id
-        ");
-        return $stmt->execute([
-            ':name' => $name,
-            ':email' => $email,
-            ':phone' => $phone,
-            ':user_id' => $userId,
-        ]);
-    }
-
-    // Delete a user (optional)
-    public function deleteUser($userId) {
-        $stmt = $this->pdo->prepare("DELETE FROM Users WHERE user_id = :user_id");
-        return $stmt->execute([':user_id' => $userId]);
-    }
+    // Additional methods like fetching users, updating users, etc., can be added here
 }
 ?>

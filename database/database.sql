@@ -74,7 +74,7 @@ CREATE TABLE Notifications (
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
-CREATE TABLE admins (
+CREATE TABLE Admins (
     admin_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
@@ -90,5 +90,5 @@ CREATE TABLE admins (
 
 
 -- Create indexes for faster queries
-CREATE INDEX idx_username ON admins(username);
-CREATE INDEX idx_email ON admins(email);
+CREATE INDEX idx_username ON Admins(username);
+CREATE INDEX idx_email ON Admins(email);
