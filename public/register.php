@@ -1,42 +1,3 @@
-<?php
-// Include the database connection and user model
-require_once __DIR__ . '/../src/config/database.php';
-require_once __DIR__ . '/../src/model/User.php';
-
-// Initialize error variable
-$error = '';
-
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form input values
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-
-    // Validate inputs
-    if (empty($name) || empty($email) || empty($phone) || empty($password) || empty($confirm_password)) {
-        $error = "All fields are required!";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Invalid email format!";
-    } elseif ($password !== $confirm_password) {
-        $error = "Passwords do not match!";
-    } else {
-        // Call the User model's addUser method to register the user
-        $userAdded = User::addUser($name, $email, $phone, $password);
-
-        // If user added successfully, redirect to login page with success message
-        if ($userAdded) {
-            header("Location: register.php?registered=true");
-            exit();
-        } else {
-            $error = "Error during registration. Please try again!";
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,15 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div class="auth-container">
         <h2>Register</h2>
-        
         <?php if (isset($_GET['registered'])): ?>
             <p class="success">Registration successful! Please log in.</p>
         <?php endif; ?>
-        
         <?php if ($error): ?>
             <p class="error"><?= $error ?></p>
         <?php endif; ?>
-        
         <form action="register.php" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -82,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit" class="btn-register">Register</button>
         </form>
-        
         <p>Already have an account? <a href="login.php">Login here</a>.</p>
         <button class="btn-home" onclick="window.location.href='index.php';">Back to Home</button>
     </div>
+
 
     <script src="assets/js/script.js"></script>
 </body>
