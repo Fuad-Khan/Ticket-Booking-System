@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Take Your Ticket - Online Bus Booking</title>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <style>
         /* Reset and General Styles */
         * {
@@ -18,18 +19,25 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+
+            background: linear-gradient(45deg, white);
+            background-size: 400% 400%;
+            animation: gradientAnimation 20s infinite alternate ease-in-out;
+
             line-height: 1.6;
-            min-height: 100vh; /* Ensure body takes at least the full viewport height */
+            min-height: 100vh;
+            /* Ensure body takes at least the full viewport height */
             display: flex;
-            flex-direction: column; /* Make body a flex container */
+            flex-direction: column;
+            /* Make body a flex container */
         }
 
         /* Main Content */
         .main-content {
-            flex: 1; /* Allow main content to grow and push footer to the bottom */
-            padding: 2rem 5%; /* Add some padding to the main content */
+            flex: 1;
+            /* Allow main content to grow and push footer to the bottom */
+            padding: 2rem 5%;
+            /* Add some padding to the main content */
         }
 
         /* Footer Styles */
@@ -38,7 +46,8 @@
             color: #fff;
             padding: 2rem 5%;
             font-family: 'Arial', sans-serif;
-            margin-top: auto; /* Push footer to the bottom */
+            margin-top: auto;
+            /* Push footer to the bottom */
         }
 
         .footer-container {
@@ -137,19 +146,20 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Footer -->
     <footer>
         <div class="footer-container">
             <!-- About Section -->
-            <div class="footer-section">
+            <div class="footer-section" id="about-us">
                 <h3>About Us</h3>
-                <p>Take Your Ticket is your trusted partner for online bus ticket bookings. We provide seamless and secure booking experiences for travelers across Bangladesh.</p>
+                <p>Take Your Ticket is your trusted partner for online ticket bookings. We provide seamless and secure booking experiences for travelers across Bangladesh.</p>
             </div>
 
             <!-- Contact Info -->
-            <div class="footer-section">
+            <div class="footer-section" id="contact-us">
                 <h3>Contact Us</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</p>
                 <p><i class="fas fa-envelope"></i> fuadkhan183@gmail.com</p>
@@ -178,8 +188,9 @@
 
         <!-- Footer Bottom -->
         <div class="footer-bottom">
-            <p>&copy; 2024 Take Your Ticket. All rights reserved. | Developed by Fuad Khan</p>
+            <p>&copy; 2025 Take Your Ticket. All rights reserved. | Developed by Team Take it Easy</p>
         </div>
     </footer>
 </body>
+
 </html>
