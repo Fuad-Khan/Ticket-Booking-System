@@ -124,7 +124,7 @@
             <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#contact-us"><i class="fas fa-envelope"></i> Contact</a>
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         <?php else: ?>
             <!-- Guest User Links -->
