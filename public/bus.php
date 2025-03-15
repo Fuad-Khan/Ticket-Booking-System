@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 // Before redirecting to login page
 $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 
