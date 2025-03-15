@@ -16,12 +16,7 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-        }
+ 
 
         /* Header */
         header {
@@ -135,7 +130,7 @@
             <!-- Guest User Links -->
              
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#contact-us"><i class="fas fa-envelope"></i> Contact</a>
             <a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
             <a href="register.php"><i class="fas fa-user-plus"></i> Register</a>
         <?php endif; ?>

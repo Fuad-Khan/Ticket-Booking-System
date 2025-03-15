@@ -48,7 +48,8 @@
             <p>Service not available right now.</p>
         </div>
     </div>
-
+    <?php include __DIR__ . '/../src/views/services-overview.php'; ?>
+    
     <?php include __DIR__ . '/../src/views/footer.php'; ?>
 
 </body>
