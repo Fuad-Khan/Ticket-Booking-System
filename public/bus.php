@@ -1,4 +1,16 @@
+<?php
+session_start();
+// Before redirecting to login page
+$_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Set a flag to show the login message
+    $login_message = "Please log in before checkout.";
+} else {
+    $login_message = "";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,34 +19,43 @@
     <title>Bus Tickets - Take Your Ticket</title>
     <link rel="stylesheet" href="assets/css/bus.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> <!-- Font Link -->
 </head>
 <body>
     <?php include __DIR__ . '/../src/views/header.php'; ?>
+
+    <!-- Display login message if not logged in -->
+    <?php if ($login_message): ?>
+        <div class="login-message">
+            <p class="message-text"><?= htmlspecialchars($login_message) ?></p>
+            <a href="login.php" class="btn-login">Go to Login</a>
+        </div>
+    <?php endif; ?>
 
     <div class="hero">
         <h1>Bus Tickets</h1>
         <p>Book your bus tickets online.</p>
     </div>
 
+    <!-- Your existing code for the bus listings -->
     <div class="search-form">
-    <form action="bus.php" method="GET">
-        <div class="form-group">
-            <input type="text" name="source" placeholder="From City" 
-                   value="<?= htmlspecialchars($_GET['source'] ?? '') ?>" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="destination" placeholder="To City" 
-                   value="<?= htmlspecialchars($_GET['destination'] ?? '') ?>" required>
-        </div>
-        <div class="form-group">
-            <input type="date" name="date" 
-                   value="<?= htmlspecialchars($_GET['date'] ?? date('Y-m-d')) ?>" 
-                   min="<?= date('Y-m-d') ?>" required>
-        </div>
-        <button type="submit" class="btn-search">Search Buses</button>
-    </form>
-</div>
-
+        <form action="bus.php" method="GET">
+            <div class="form-group">
+                <input type="text" name="source" placeholder="From City" 
+                       value="<?= htmlspecialchars($_GET['source'] ?? '') ?>" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="destination" placeholder="To City" 
+                       value="<?= htmlspecialchars($_GET['destination'] ?? '') ?>" required>
+            </div>
+            <div class="form-group">
+                <input type="date" name="date" 
+                       value="<?= htmlspecialchars($_GET['date'] ?? date('Y-m-d')) ?>" 
+                       min="<?= date('Y-m-d') ?>" required>
+            </div>
+            <button type="submit" class="btn-search">Search Buses</button>
+        </form>
+    </div>
 
     <div class="bus-listings">
         <?php if ($error): ?>

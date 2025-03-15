@@ -133,6 +133,7 @@
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         <?php else: ?>
             <!-- Guest User Links -->
+             
             <a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             <a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
