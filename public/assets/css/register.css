@@ -1,119 +1,105 @@
-/* General styles */
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
-/* Authentication container */
-.auth-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* Container styling */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    width: 350px;
 }
 
+/* Heading styling */
 h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
     color: #333;
 }
 
-/* Form styles */
-.form-group {
-    margin-bottom: 1rem;
+/* Error message styling */
+.error {
+    color: #ff0000;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styling */
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
     text-align: left;
 }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
+/* Input field styling */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 16px;
 }
 
-/* Button styles */
-.btn-register {
-    width: 100%;
+/* Button styling */
+button {
     padding: 10px;
-    background: #28a745;
-    color: white;
+    background-color: #28a745;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 4px;
     font-size: 16px;
-    transition: background 0.3s ease;
+    cursor: pointer;
 }
 
-.btn-register:hover {
-    background: #218838;
+button:hover {
+    background-color: #218838;
 }
 
-/* Success and Error messages */
-.success {
-    color: green;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.error {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-/* Register link */
+/* Link styling */
 p {
-    margin-top: 10px;
+    margin-top: 15px;
+    color: #555;
 }
 
-p a {
+a {
     color: #007bff;
     text-decoration: none;
 }
 
-p a:hover {
+a:hover {
     text-decoration: underline;
 }
 
-/* Back to Home Button */
+/* Home button styling */
 .btn-home {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
     margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .btn-home:hover {
-    background-color: #5a6268;
-}
-
-
-
-/* Responsive design */
-@media (max-width: 400px) {
-    .auth-container {
-        width: 90%;
-    }
+    background-color: #0056b3;
 }
