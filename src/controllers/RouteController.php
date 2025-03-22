@@ -60,7 +60,39 @@ class RouteController {
         }
     }
 
-    
+    // Update route details
+    public function updateRoute($route_id, $source, $destination, $distance) {
+        $result = $this->routeModel->updateRoute($route_id, $source, $destination, $distance);
+
+        if ($result) {
+            return [
+                'status' => 'success',
+                'message' => 'Route updated successfully!'
+            ];
+        } else {
+            return [
+                'status' => 'error',
+                'message' => 'Failed to update route.'
+            ];
+        }
+    }
+
+    // Delete a route
+    public function deleteRoute($route_id) {
+        $result = $this->routeModel->deleteRoute($route_id);
+
+        if ($result) {
+            return [
+                'status' => 'success',
+                'message' => 'Route deleted successfully!'
+            ];
+        } else {
+            return [
+                'status' => 'error',
+                'message' => 'Failed to delete route.'
+            ];
+        }
+    }
 
     
 }
