@@ -17,8 +17,8 @@ class Database {
             return self::$pdo;  
         } catch (PDOException $e) {  
             error_log("Database connection failed: " . $e->getMessage());
-            header('Location: /500.php');
-            exit();  
+            header('Location: /Ticket-Booking-System/public/500.php');
+            exit();
         }  
     }  
 }
