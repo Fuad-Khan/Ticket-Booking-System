@@ -1,0 +1,9 @@
+# bus-ticket-booking/.gitignore
+.env
+.env.local
+vendor/
+node_modules/
+*.log
+.DS_Store
+.idea/
+# ... (rest of previous entries)
