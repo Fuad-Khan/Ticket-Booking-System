@@ -92,3 +92,13 @@ CREATE TABLE Admins (
 -- Create indexes for faster queries
 CREATE INDEX idx_username ON Admins(username);
 CREATE INDEX idx_email ON Admins(email);
+
+
+-- Add Route Stops Table
+CREATE TABLE Route_Stops (
+    stop_id INT AUTO_INCREMENT PRIMARY KEY,
+    route_id INT,
+    stop_name VARCHAR(100) NOT NULL,
+    stop_order INT NOT NULL, -- position in route: 1, 2, 3...
+    FOREIGN KEY (route_id) REFERENCES Routes(route_id) ON DELETE CASCADE
+);
