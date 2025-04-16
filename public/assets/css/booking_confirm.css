@@ -1,33 +1,63 @@
 .booking-container {
-    width: 100%;
-    max-width: 400px;
+    max-width: 1000px;
+    margin: 30px auto;
+    display: flex;
+    gap: 30px;
+}
+
+.booking-summary {
+    flex: 1;
+    background: #f9f9f9;
     padding: 20px;
-    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booking-summary h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.summary-item span:first-child {
+    font-weight: bold;
+    color: #555;
+}
+
+.summary-item span:last-child {
+    color: #333;
 }
 
 .booking-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 25px;
-    text-align: left;
+    flex: 2;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .booking-card h1 {
+    margin-top: 0;
     color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 600;
     color: #555;
 }
 
@@ -35,46 +65,35 @@
 .form-group input[type="email"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
 }
-
-
 
 .radio-group {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .radio-group label {
     display: flex;
     align-items: center;
-    font-weight: normal;
-    color: #555;
-}
-
-.radio-group input[type="radio"] {
-    margin-right: 5px;
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: #fff;
-    background: #6a11cb;
-    border: none;
-    border-radius: 5px;
+    gap: 5px;
     cursor: pointer;
-    text-decoration: none;
 }
 
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
 
-.btn:hover {
-    background: #2575fc;
+.btn-primary:hover {
+    background: #45a049;
 }

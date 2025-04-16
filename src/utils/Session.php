@@ -1,5 +1,6 @@
 <?php
 
+
 // Session class (no duplicate)
 class Session {
     // Start the session if not already started
@@ -50,5 +51,18 @@ class Session {
         header("Location: $url");
         exit();
     }
+
+    // Flash message method (add this inside Session class)
+public static function flash($key, $message = '') {
+    if (!empty($message)) {
+        $_SESSION[$key] = $message;
+    } elseif (isset($_SESSION[$key])) {
+        $value = $_SESSION[$key];
+        unset($_SESSION[$key]);
+        return $value;
+    }
+    return null;
+}
+
 }
 ?>
