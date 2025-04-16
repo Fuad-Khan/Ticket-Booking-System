@@ -10,17 +10,20 @@ body {
 } */
 
 /* Hero Section */
+/* Hero Section */
+/* Hero Section */
 .hero {
     text-align: center;
+    color: white; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     padding: 80px 20px;
-    background: rgba(0, 0, 0, 0.6);
+    background: #3498db; /* Blue background as requested */
     border-radius: 15px;
     margin: 20px auto;
     max-width: 900px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.4s ease-in-out;
 }
-
 .hero:hover {
     transform: scale(1.03);
 }
@@ -30,14 +33,14 @@ body {
     margin-bottom: 10px;
     text-transform: uppercase;
     font-weight: bold;
-    color: #3498db; /* Change to #3498db */
-    text-shadow: 3px 3px 15px rgba(52, 152, 219, 0.5); /* Use blue color in shadow */
+    color: white; /* Changed to white for visibility on blue background */
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5); /* Darker shadow for contrast */
 }
 
 .hero p {
     font-size: 1.4em;
     opacity: 0.9;
-    color: #d4d4d4;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Services Section */

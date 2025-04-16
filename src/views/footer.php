@@ -10,47 +10,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* Reset and General Styles */
-        * {
+        /* Body and Page Structure - Minimal impact solution */
+        body {
+            position: relative;
+            min-height: 100vh;
             margin: 0;
-            padding: 0;
+            padding-bottom: 300px; /* Adjust based on footer height */
             box-sizing: border-box;
         }
+        
+     
 
-        body {
+        /* Scoped Footer Styles */
+        .ticket-footer {
             font-family: 'Arial', sans-serif;
-
-            background: linear-gradient(45deg, white);
-            background-size: 400% 400%;
-            animation: gradientAnimation 20s infinite alternate ease-in-out;
-
-            line-height: 1.6;
-            min-height: 100vh;
-            /* Ensure body takes at least the full viewport height */
-            display: flex;
-            flex-direction: column;
-            /* Make body a flex container */
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            /* Allow main content to grow and push footer to the bottom */
-            padding: 2rem 5%;
-            /* Add some padding to the main content */
-        }
-
-        /* Footer Styles */
-        footer {
             background: linear-gradient(to right, #2575fc, #1a55b4);
             color: #fff;
             padding: 2rem 5%;
-            font-family: 'Arial', sans-serif;
-            margin-top: auto;
-            /* Push footer to the bottom */
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .footer-container {
+        .ticket-footer .footer-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -58,11 +41,7 @@
             gap: 1.5rem;
         }
 
-        .footer-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section h3 {
+        .ticket-footer .footer-section h3 {
             color: #ffcc00;
             font-size: 1.4rem;
             margin-bottom: 1rem;
@@ -70,7 +49,7 @@
             padding-bottom: 0.5rem;
         }
 
-        .footer-section h3::after {
+        .ticket-footer .footer-section h3::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -80,13 +59,13 @@
             background-color: #ffcc00;
         }
 
-        .footer-section p {
+        .ticket-footer .footer-section p {
             font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 0.8rem;
         }
 
-        .footer-section a {
+        .ticket-footer .footer-section a {
             color: #fff;
             text-decoration: none;
             transition: color 0.3s ease;
@@ -94,28 +73,28 @@
             margin-bottom: 0.6rem;
         }
 
-        .footer-section a:hover {
+        .ticket-footer .footer-section a:hover {
             color: #ffcc00;
         }
 
-        .social-media {
+        .ticket-footer .social-media {
             display: flex;
             gap: 1.2rem;
             margin-top: 1rem;
         }
 
-        .social-media a {
+        .ticket-footer .social-media a {
             font-size: 1.4rem;
             color: #fff;
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        .social-media a:hover {
+        .ticket-footer .social-media a:hover {
             transform: translateY(-3px);
             color: #ffcc00;
         }
 
-        .footer-bottom {
+        .ticket-footer .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -123,24 +102,28 @@
             font-size: 0.9rem;
         }
 
-        .footer-bottom p {
+        .ticket-footer .footer-bottom p {
             margin: 0;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .footer-container {
+            body {
+                padding-bottom: 400px; /* Adjust for mobile footer height */
+            }
+            
+            .ticket-footer .footer-container {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 1rem;
             }
 
-            .footer-section h3::after {
+            .ticket-footer .footer-section h3::after {
                 left: 50%;
                 transform: translateX(-50%);
             }
 
-            .social-media {
+            .ticket-footer .social-media {
                 justify-content: center;
             }
         }
@@ -149,8 +132,9 @@
 
 <body>
 
+
     <!-- Footer -->
-    <footer>
+    <footer class="ticket-footer">
         <div class="footer-container">
             <!-- About Section -->
             <div class="footer-section" id="about-us">
@@ -191,6 +175,7 @@
             <p>&copy; 2025 Take Your Ticket. All rights reserved. | Developed by Team Take it Easy</p>
         </div>
     </footer>
+
 </body>
 
 </html>

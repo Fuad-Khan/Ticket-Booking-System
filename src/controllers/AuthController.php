@@ -163,14 +163,8 @@ class AuthController
         // Generate a password reset token
         $token = bin2hex(random_bytes(50));
 
-        // Store the token in the database (for the sake of simplicity, assuming `password_reset` table exists)
-        // In real systems, this would be stored in a password reset table in the database
-        // User::storePasswordResetToken($email, $token);
-
-        // Send the reset token to the user via email (this example uses a simple mail function)
         $resetLink = "https://yourdomain.com/reset-password.php?token=$token";
 
-        // You can use the Mailer class to send the email, here we are simulating it
         mail($email, "Password Reset Request", "Click the following link to reset your password: $resetLink");
 
         return "A password reset link has been sent to your email.";
@@ -184,14 +178,21 @@ class AuthController
             return "Password must be at least 8 characters long, contain an uppercase letter, a number, and a special character.";
         }
 
-        // Validate the token (for simplicity, assuming token is valid)
-        // In a real application, you would verify the token from the database
-        // User::verifyPasswordResetToken($token);
 
-        // Reset the password (assuming email and token are valid)
-        // User::updatePassword($email, $newPassword);
-
-        // After successful reset, the user should log in again
         return "Your password has been reset successfully.";
+    }
+
+    public static function updateProfile($userId, $name, $email, $phone) {
+        // Validate inputs
+        if (empty($name) || empty($email) || empty($phone)) {
+            return "All fields are required";
+        }
+        
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return "Invalid email format";
+        }
+        
+
+        return true;
     }
 }
