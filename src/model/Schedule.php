@@ -8,28 +8,24 @@ require_once __DIR__ . '/../config/bootstrap.php';
 require_once __DIR__ . '/../config/database.php';
 
 class Schedule {
-    private $pdo;
+    private $db;
 
     public function __construct() {
-        $this->pdo = Database::connect();
+        $this->db = Database::connect();
     }
 
-    // Get schedules for a bus with price
-    public function getSchedulesByBus($busId) {
-        try {
-            $stmt = $this->pdo->prepare("
-                SELECT * FROM Schedules 
-                WHERE bus_id = :bus_id
-                ORDER BY departure_time
-            ");
-            
-            $stmt->execute([':bus_id' => $busId]);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Schedule search error: " . $e->getMessage());
-            return [];
-        }
+    public function getSchedulesByBus($bus_id) {
+        $stmt = $this->db->prepare("SELECT * FROM Schedules WHERE bus_id = ? ORDER BY departure_time");
+        $stmt->execute([$bus_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Additional CRUD operations...
+    public function getScheduleById($schedule_id) {
+        $stmt = $this->db->prepare("SELECT * FROM Schedules WHERE schedule_id = ?");
+        $stmt->execute([$schedule_id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    
 }
+?>

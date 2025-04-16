@@ -1,168 +1,150 @@
 <?php
-// src/controllers/BookingController.php
-
-error_reporting(E_ALL); // Report all errors
-ini_set('display_errors', 1); // Display errors to the screen
-
-
 require_once __DIR__ . '/../model/Booking.php';
-require_once __DIR__ . '/../model/Payment.php';
-require_once __DIR__ . '/../utils/Helpers.php';
-require_once __DIR__ . '/../utils/Session.php';
+require_once __DIR__ . '/../model/Schedule.php';
+require_once __DIR__ . '/../model/Bus.php';
 
-class BookingController {
+class BookingController
+{
     private $bookingModel;
-    private $paymentModel;
+    private $scheduleModel;
+    private $busModel;
+    private $routeModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->bookingModel = new Booking();
-        $this->paymentModel = new Payment();
-        Session::start();
+        $this->scheduleModel = new Schedule();
+        $this->busModel = new Bus();
     }
 
-    // Create a new booking
-    public function createBooking($userId, $scheduleId, $seatNumbers, $totalPrice) {
-        try {
-            // Validate inputs
-            if (empty($userId) || empty($scheduleId) || empty($seatNumbers) || empty($totalPrice)) {
-                throw new Exception("All fields are required");
-            }
+    public function getScheduleModel()
+    {
+        return $this->scheduleModel;
+    }
 
-            // Create the booking
-            $bookingId = $this->bookingModel->createBooking($userId, $scheduleId, $seatNumbers, $totalPrice);
-            
-            if (!$bookingId) {
-                throw new Exception("Failed to create booking");
-            }
+    public function getBusModel()
+    {
+        return $this->busModel;
+    }
 
-            return $bookingId;
-        } catch (Exception $e) {
-            error_log("BookingController createBooking error: " . $e->getMessage());
-            Session::set('booking_error', $e->getMessage());
-            return false;
+
+    public function getBookingById($booking_id)
+    {
+        return $this->bookingModel->getById($booking_id);
+    }
+
+
+    public function bookSeats($user_id, $schedule_id, $seat_numbers)
+    {
+        // Get schedule details
+        $schedule = $this->scheduleModel->getScheduleById($schedule_id);
+        if (!$schedule) return false;
+
+        // Get bus details
+        $bus = $this->busModel->getBusById($schedule['bus_id']);
+        if (!$bus) return false;
+
+        // Check if seats are already booked
+        $booked_seats = $this->bookingModel->getBookedSeats($schedule_id);
+        $all_booked = [];
+        foreach ($booked_seats as $seats) {
+            $all_booked = array_merge($all_booked, explode(',', $seats));
         }
+        foreach ($seat_numbers as $seat) {
+            if (in_array($seat, $all_booked)) {
+                return false; // One or more seats already booked
+            }
+        }
+
+        // Create booking
+        $total_price = $schedule['price'] * count($seat_numbers);
+        $seat_numbers_str = implode(',', $seat_numbers);
+
+        return $this->bookingModel->createBooking($user_id, $schedule_id, $seat_numbers_str, $total_price);
     }
 
-    // Get booking details
-    public function getBookingDetails($bookingId) {
-        try {
-            if (empty($bookingId)) {
-                throw new Exception("Booking ID is required");
-            }
+    public function getAvailableSeats($schedule_id)
+    {
+        $schedule = $this->scheduleModel->getScheduleById($schedule_id);
+        if (!$schedule) return [];
 
-            $booking = $this->bookingModel->getBookingById($bookingId);
-            
+        $bus = $this->busModel->getBusById($schedule['bus_id']);
+        if (!$bus) return [];
+
+        $total_seats = $bus['total_seats'];
+        $booked_seats = $this->bookingModel->getBookedSeats($schedule_id);
+
+        // Flatten all booked seats into a single array
+        $all_booked_seats = [];
+        foreach ($booked_seats as $seats) {
+            $all_booked_seats = array_merge($all_booked_seats, explode(',', $seats));
+        }
+
+        // Generate all seats and mark availability
+        $seats = [];
+        for ($i = 1; $i <= $total_seats; $i++) {
+            $seats[$i] = !in_array($i, $all_booked_seats);
+        }
+
+        return $seats;
+    }
+
+    public function getUserBookings($user_id)
+    {
+        return $this->bookingModel->getUserBookings($user_id);
+    }
+
+    public function getBusDetailsForSchedule($schedule_id)
+    {
+        // Get schedule details
+        $schedule = $this->scheduleModel->getScheduleById($schedule_id);
+        if (!$schedule) return null;
+
+        // Get bus details
+        $bus = $this->busModel->getBusById($schedule['bus_id']);
+        if (!$bus) return null;
+
+        // Get route details
+        $route = $this->routeModel->getRouteById($bus['route_id']);
+        if (!$route) return null;
+
+        return [
+            'bus' => $bus,
+            'route' => $route,
+            'schedule' => $schedule
+        ];
+    }
+
+   
+    public function cancelBooking($booking_id) {
+        try {
+            // First verify the booking exists
+            $booking = $this->bookingModel->getById($booking_id);
             if (!$booking) {
-                throw new Exception("Booking not found");
+                return false;
             }
-
-            return $booking;
-        } catch (Exception $e) {
-            error_log("BookingController getBookingDetails error: " . $e->getMessage());
-            Session::set('booking_error', $e->getMessage());
-            return false;
-        }
-    }
-
-    // Get all bookings for a user
-    public function getUserBookings($userId) {
-        try {
-            if (empty($userId)) {
-                throw new Exception("User ID is required");
-            }
-
-            return $this->bookingModel->getUserBookings($userId);
-        } catch (Exception $e) {
-            error_log("BookingController getUserBookings error: " . $e->getMessage());
-            Session::set('booking_error', $e->getMessage());
-            return [];
-        }
-    }
-
-    // Cancel a booking
-    public function cancelBooking($bookingId, $userId) {
-        try {
-            if (empty($bookingId) || empty($userId)) {
-                throw new Exception("Booking ID and User ID are required");
-            }
-
-            // Verify the booking belongs to the user
-            $booking = $this->bookingModel->getBookingById($bookingId);
-            if (!$booking || $booking['user_id'] != $userId) {
-                throw new Exception("Booking not found or doesn't belong to you");
-            }
-
-            // Check if booking can be cancelled (not already cancelled or completed)
-            if ($booking['booking_status'] == 'Cancelled') {
-                throw new Exception("Booking is already cancelled");
-            }
-
-            // Update booking status
-            $success = $this->bookingModel->updateBookingStatus($bookingId, 'Cancelled');
             
-            if (!$success) {
-                throw new Exception("Failed to cancel booking");
-            }
-
-            // If payment exists, mark it as failed
-            $payment = $this->paymentModel->getPaymentByBookingId($bookingId);
-            if ($payment) {
-                $this->paymentModel->updatePaymentStatus($payment['payment_id'], 'Failed');
-            }
-
-            return true;
+            // Update the status to Cancelled
+            return $this->bookingModel->cancelBooking($booking_id);
         } catch (Exception $e) {
-            error_log("BookingController cancelBooking error: " . $e->getMessage());
-            Session::set('booking_error', $e->getMessage());
+            error_log('Error cancelling booking: ' . $e->getMessage());
             return false;
         }
     }
 
-    // Admin: Get all bookings
-    public function getAllBookings() {
-        try {
-            // Check if admin is logged in (you might want to add admin authentication)
-            if (!Session::exists('admin_logged_in')) {
-                throw new Exception("Unauthorized access");
-            }
-
-            return $this->bookingModel->getAllBookings();
-        } catch (Exception $e) {
-            error_log("BookingController getAllBookings error: " . $e->getMessage());
-            Session::set('admin_error', $e->getMessage());
-            return [];
-        }
+    public function getAllBookings()
+    { /* ... */
     }
-
-    // Admin: Update booking status
-    public function updateBookingStatus($bookingId, $status) {
-        try {
-            // Check if admin is logged in
-            if (!Session::exists('admin_logged_in')) {
-                throw new Exception("Unauthorized access");
-            }
-
-            if (empty($bookingId) || empty($status)) {
-                throw new Exception("Booking ID and status are required");
-            }
-
-            $validStatuses = ['Pending', 'Confirmed', 'Cancelled'];
-            if (!in_array($status, $validStatuses)) {
-                throw new Exception("Invalid booking status");
-            }
-
-            $success = $this->bookingModel->updateBookingStatus($bookingId, $status);
-            
-            if (!$success) {
-                throw new Exception("Failed to update booking status");
-            }
-
-            return true;
-        } catch (Exception $e) {
-            error_log("BookingController updateBookingStatus error: " . $e->getMessage());
-            Session::set('admin_error', $e->getMessage());
-            return false;
-        }
+    public function getBookingsByUser($user_id)
+    { /* ... */
+    }
+    public function createBooking($user_id, $schedule_id, $seat_numbers, $total_price, $status = 'Pending')
+    { /* ... */
+    }
+    public function updateBookingStatus($booking_id, $status)
+    { /* ... */
+    }
+    public function deleteBooking($booking_id)
+    { /* ... */
     }
 }
-?>
