@@ -8,8 +8,7 @@ class User
     // Register a new user
     public static function registerUser($name, $email, $phone, $password)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
-
+        $pdo = Database::connect();  
         try {
             // Hash the password
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -36,7 +35,7 @@ class User
     // Get user by email (for login)
     public static function getUserByEmail($email)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
+        $pdo = Database::connect();  
 
         try {
             // Prepare SQL query to select user by email
@@ -55,7 +54,7 @@ class User
 
     public static function getUserByPhone($phone)
 {
-    $pdo = Database::connect();  // Ensure the PDO connection is initialized
+    $pdo = Database::connect(); 
 
     try {
         // Prepare SQL query to select user by phone number
@@ -76,7 +75,7 @@ class User
     // Get user by user_id (to fetch user details)
     public static function getUserById($userId)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
+        $pdo = Database::connect();  
 
         try {
             // Prepare SQL query to select user by user_id
@@ -96,7 +95,7 @@ class User
     // Update user information (for profile update)
     public static function updateUser($userId, $name, $email, $phone, $password = null)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
+        $pdo = Database::connect();  
 
         try {
             // If password is provided, hash it, else keep the old password
@@ -135,7 +134,7 @@ class User
     // Delete user (for account deletion)
     public static function deleteUser($userId)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
+        $pdo = Database::connect();  
 
         try {
             // Prepare SQL query to delete user
@@ -154,7 +153,7 @@ class User
     // Check if an email is already registered (for registration validation)
     public static function isEmailRegistered($email)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
+        $pdo = Database::connect();  
 
         try {
             // Prepare SQL query to check if the email exists
@@ -174,8 +173,7 @@ class User
     // Check if a phone number is already registered (for registration validation)
     public static function isPhoneRegistered($phone)
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
-
+        $pdo = Database::connect();  
         try {
             // Prepare SQL query to check if the phone number exists
             $stmt = $pdo->prepare("SELECT * FROM Users WHERE phone = :phone");
@@ -194,7 +192,7 @@ class User
     // Get all users (for admin panel or user management)
     public static function getAllUsers()
     {
-        $pdo = Database::connect();  // Ensure the PDO connection is initialized
+        $pdo = Database::connect();  
 
         try {
             // Prepare SQL query to select all users

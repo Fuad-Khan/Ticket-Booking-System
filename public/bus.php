@@ -4,9 +4,6 @@ session_start();
 // Before redirecting to login page
 $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
 
-
-
-
 require_once __DIR__ . '/../src/controllers/BusController.php';
 require_once __DIR__ . '/../src/controllers/BookingController.php';
 
@@ -17,6 +14,7 @@ $bookingController = new BookingController();
 // Initialize variables
 $source = $_GET['source'] ?? ($_POST['source'] ?? '');
 $destination = $_GET['destination'] ?? ($_POST['destination'] ?? '');
+$travel_date = $_GET['travel_date'] ?? ($_POST['travel_date'] ?? date('Y-m-d'));
 $buses = [];
 $selected_seats_count = 0;
 $max_seats = 4; // Maximum seats that can be selected
@@ -25,7 +23,8 @@ $max_seats = 4; // Maximum seats that can be selected
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
     $source = $_POST['source'];
     $destination = $_POST['destination'];
-    $buses = $busController->searchBuses($source, $destination);
+    $travel_date = $_POST['travel_date'];
+    $buses = $busController->searchBuses($source, $destination, $travel_date);
 }
 
 // Handle booking form submission
@@ -35,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book'])) {
     $_SESSION['schedule_id'] = $_POST['schedule_id'];
     $_SESSION['source'] = $_POST['source'];
     $_SESSION['destination'] = $_POST['destination'];
+    $_SESSION['travel_date'] = $_POST['travel_date'];
 
     // Check if user is logged in
     if (!isset($_SESSION['user_id'])) {
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book'])) {
 // Get available seats for a schedule
 $available_seats = [];
 if (isset($_GET['schedule_id'])) {
-    $available_seats = $bookingController->getAvailableSeats($_GET['schedule_id']);
+    $available_seats = $bookingController->getAvailableSeats($_GET['schedule_id'], $travel_date);
     $schedule = (new Schedule())->getScheduleById($_GET['schedule_id']);
     $bus = (new Bus())->getBusById($schedule['bus_id']);
 }
@@ -84,12 +84,18 @@ if (isset($_GET['schedule_id'])) {
                 <label for="destination">To:</label>
                 <input type="text" id="destination" name="destination" class="bus-input" value="<?= htmlspecialchars($destination) ?>" required>
             </div>
+            <div class="bus-form-group">
+                <label for="travel_date">Travel Date:</label>
+                <input type="date" id="travel_date" name="travel_date" class="bus-input" 
+                       value="<?= htmlspecialchars($travel_date) ?>" 
+                       min="<?= date('Y-m-d') ?>" required>
+            </div>
             <button type="submit" name="search" class="bus-primary-btn">Search Buses</button>
         </form>
 
         <!-- Search Results -->
         <?php if (!empty($buses)): ?>
-            <h2 class="bus-subheader">Available Buses</h2>
+            <h2 class="bus-subheader">Available Buses for <?= date('F j, Y', strtotime($travel_date)) ?></h2>
             <div class="bus-list">
                 <?php foreach ($buses as $bus): ?>
                     <div class="bus-card">
@@ -97,8 +103,9 @@ if (isset($_GET['schedule_id'])) {
                         <p class="bus-card-text">Route: <?= htmlspecialchars($bus['route']['source']) ?> to <?= htmlspecialchars($bus['route']['destination']) ?></p>
                         <p class="bus-card-text">Departure: <?= date('h:i A', strtotime($bus['schedule']['departure_time'])) ?></p>
                         <p class="bus-card-text">Arrival: <?= date('h:i A', strtotime($bus['schedule']['arrival_time'])) ?></p>
+                        <p class="bus-card-text">Date: <?= date('F j, Y', strtotime($travel_date)) ?></p>
                         <p class="bus-card-text">Price: <?= number_format($bus['schedule']['price'], 2) ?> Taka</p>
-                        <a href="bus.php?schedule_id=<?= $bus['schedule']['schedule_id'] ?>&source=<?= urlencode($source) ?>&destination=<?= urlencode($destination) ?>" class="bus-card-link">View Seats</a>
+                        <a href="bus.php?schedule_id=<?= $bus['schedule']['schedule_id'] ?>&source=<?= urlencode($source) ?>&destination=<?= urlencode($destination) ?>&travel_date=<?= urlencode($travel_date) ?>" class="bus-card-link">View Seats</a>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -107,7 +114,7 @@ if (isset($_GET['schedule_id'])) {
         <!-- Seat Selection -->
         <?php if (!empty($available_seats) && isset($schedule)): ?>
             <div class="bus-departure-info">
-                <h2 class="bus-departure-header">DEPARTURE</h2>
+                <h2 class="bus-departure-header">DEPARTURE - <?= date('F j, Y', strtotime($travel_date)) ?></h2>
                 <h3 class="bus-departure-title"><?= htmlspecialchars($bus['bus_name']) ?> - <?= date('h:i A', strtotime($schedule['departure_time'])) ?></h3>
                 <p class="bus-departure-note"><em>Trip time may delay due to traffic</em></p>
             </div>
@@ -133,6 +140,7 @@ if (isset($_GET['schedule_id'])) {
                 <input type="hidden" name="schedule_id" value="<?= $_GET['schedule_id'] ?>">
                 <input type="hidden" name="source" value="<?= htmlspecialchars($source) ?>">
                 <input type="hidden" name="destination" value="<?= htmlspecialchars($destination) ?>">
+                <input type="hidden" name="travel_date" value="<?= htmlspecialchars($travel_date) ?>">
 
                 <div class="bus-seat-map">
                     <?php
@@ -168,8 +176,6 @@ if (isset($_GET['schedule_id'])) {
             </form>
         <?php endif; ?>
     </div>
-
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
