@@ -81,7 +81,7 @@ public function cancelBooking($booking_id) {
     return $stmt->execute();
 }
     public function getById($booking_id) {
-        $stmt = $this->db->prepare("SELECT * FROM Bookings WHERE booking_id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM bookings WHERE booking_id = ?");
         $stmt->execute([$booking_id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
